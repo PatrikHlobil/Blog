@@ -11,10 +11,11 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.11
-    - name: Install pre-commit
+    - name: Install poetry
       run: |
         sudo apt update
-        sudo apt install pre-commit
-        pre-commit install
-    - name: Run pre-commit checks
-      run: pre-commit run --all-files --show-diff-on-failure
+        sudo apt install poetry
+    - name: Run config validation
+      run: |
+        poetry install
+        poetry run validate-configs content
