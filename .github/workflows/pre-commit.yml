@@ -1,0 +1,19 @@
+parameters:
+  python: '3.11'
+
+jobs:
+- job: precommit
+  pool:
+    vmImage: ubuntu-latest
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: ${{ parameters.python }}
+  - script: sudo apt update
+    displayName: install pre-commit
+  - script: sudo apt install pre-commit
+    displayName: install pre-commit
+  - script: pre-commit install
+    displayName: install pre-commit
+  - script: pre-commit run --all-files --show-diff-on-failure
+    displayName: run pre-commit

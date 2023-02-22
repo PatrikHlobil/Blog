@@ -1,54 +1,91 @@
 - title: The YAML document from hell
   authors: [Ruud van Asseldonk]
-  tags: 
-    - yaml
-    - config
+  tags:
+  - yaml
+  - config
   link: https://ruudvanasseldonk.com/2023/01/11/the-yaml-document-from-hell
   date: 2022-02-22
 - title: Packaging code with PEX — a PySpark examplex
   authors: [Fabian Höring]
-  tags: 
-    - pex
-    - pyspark
+  tags:
+  - pex
+  - pyspark
   link: https://medium.com/criteo-engineering/packaging-code-with-pex-a-pyspark-example-9057f9f144f3
   date: 2022-02-22
 - title: Fundamental Modeling Concepts
-  tags: 
-    - architecture
-    - fmc
-    - uml
+  tags:
+  - architecture
+  - fmc
+  - uml
   link: http://www.fmc-modeling.org/home
   date: 2022-02-22
-- title: "Net-textorial: Using Textual to build a nework monitor"
+- title: 'Net-textorial: Using Textual to build a nework monitor'
   authors: [Danny Wade]
-  tags: 
-    - textual
-    - tui
-    - network
+  tags:
+  - textual
+  - tui
+  - network
   link: https://devnetdan.com/2023/02/05/net-textorial/
-- title: "Prototype Pollution in Python"
-  tags: 
-    - python
-    - security
+  date: 2022-02-22
+- title: Prototype Pollution in Python
+  tags:
+  - python
+  - security
   link: https://blog.abdulrah33m.com/prototype-pollution-in-python/
-- title: "Introducing ADBC: Database Access for Apache Arrow"
-  tags: 
-    - apache arrow
-    - database
+  date: 2022-02-22
+- title: 'Introducing ADBC: Database Access for Apache Arrow'
+  tags:
+  - apache arrow
+  - database
   link: https://arrow.apache.org/blog/2023/01/05/introducing-arrow-adbc/
+  date: 2022-02-22
 - title: Querying Parquet with Millisecond Latency
-  authors: 
-    - Raphael Taylor-Davies
-    - Andrew Lamb
-  tags: 
-    - parquet
-    - big data 
+  authors:
+  - Raphael Taylor-Davies
+  - Andrew Lamb
+  tags:
+  - parquet
+  - big data
   link: https://arrow.apache.org/blog/2022/12/26/querying-parquet-with-millisecond-latency/
+  date: 2022-02-22
 - title: The Origins of Python
   authors: [Lambert Meertens]
-  tags: 
-    - python
-    - history
+  tags:
+  - python
+  - history
   link: https://inference-review.com/article/the-origins-of-python
-  
-  
+  date: 2022-02-22
+- title: 20% Faster Python with a Single GC Tweak
+  authors: [Michael Kennedy]
+  tags:
+  - python
+  - performance
+  link: https://mkennedy.codes/posts/python-gc-settings-change-this-and-make-your-app-go-20pc-faster/
+  date: 2022-02-22
+- title: Share your pytest fixture
+  authors: [Brian Okken]
+  tags:
+  - python
+  - pytest
+  link: https://github.com/okken/pytest_fixture_sharing/blob/main/sharing_is_caring.pdf
+  date: 2022-02-22
+- title: Awesome Web Security
+  authors: [Syue Siang Su]
+  tags:
+  - security
+  link: https://github.com/qazbnm456/awesome-web-security
+  date: 2022-02-22
+- title: How to create your own auto-completion for JSON and YAML files on VS Code with the help of JSON Schema
+  authors: [Bruno Paz]
+  tags:
+  - config
+  - jsonschema
+  link: https://dev.to/brpaz/how-to-create-your-own-auto-completion-for-json-and-yaml-files-on-vs-code-with-the-help-of-json-schema-k1i
+  date: 2022-02-22
+- title: Pydantic Model Auto-Generator (datamodel-code-generator)
+  authors: [Koudai Aono]
+  tags:
+  - config
+  - pydantic
+  link: https://github.com/koxudaxi/datamodel-code-generator
+  date: 2022-02-22
