@@ -1,8 +1,9 @@
 parameters:
   python: '3.11'
+name: pre-commit
 
 jobs:
-- job: precommit
+- job: pre-commit
   pool:
     vmImage: ubuntu-latest
   steps:
