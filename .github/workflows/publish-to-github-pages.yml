@@ -1,31 +1,31 @@
 name: Publish to Github Pages
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+    - main
+
+permissions:
+  contents: write
 
 jobs:
   publish-to-github-pages:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Python Version
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: 3.11
+    - uses: actions/cache@v2
+      with:
+        key: ${{ github.ref }}
+        path: .cache
     - name: Install poetry
       run: |
         curl -fsS https://install.python-poetry.org | python - -y
-    - name: Generate Static HTML
-      run: |
-        rm -rf docs
-        poetry install
-        poetry run generate-html --content-dir content --target-dir docs/sites
-        poetry run mkdocs build -d docs
     - name: Update Github Pages
       run: |
-        git config --global user.email "patrik.hlobil@gmail.com"
-        git config --global user.name "Patrik Hlobil"
-        git fetch
-        git checkout gh-pages
-        git add docs/
-        git commit -m "Update Github Pages for '${GITHUB_SHA}'"
-        git push
+        poetry install
+        poetry run generate-html --content-dir content --target-dir docs/sites
+        poetry run mkdocs gh-deploy--force
