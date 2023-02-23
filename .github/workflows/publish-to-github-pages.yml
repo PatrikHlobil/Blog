@@ -18,7 +18,7 @@ jobs:
       run: |
         rm -rf docs
         poetry install
-        generate-html --content-dir content --target-dir docs/sites
+        poetry run generate-html --content-dir content --target-dir docs/sites
         mkdocs build -d docs
     - name: Update Github Pages
       run: |
