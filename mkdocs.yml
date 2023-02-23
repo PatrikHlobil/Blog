@@ -1,0 +1,21 @@
+site_name: Blog of Patrik Hlobil
+
+# Repository
+repo_name: Blog
+repo_url: https://github.com/PatrikHlobil/Blog
+
+nav:
+- Home: index.md
+- Links: sites/links.html
+
+plugins:
+- search
+
+theme:
+  name: material
+  logo: https://avatars.githubusercontent.com/u/31643597?v=4
+  favicon: static/favicon-32x32.png
+  features:
+  - search.highlight
+  - search.suggest
+  - toc.integrate

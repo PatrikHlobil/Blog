@@ -10,9 +10,8 @@ from blog_generator.models.validate import parse_config
 @click.option(
     "--content-dir", type=click.Path(exists=True, path_type=Path), required=True
 )
-@click.option(
-    "--target-dir", type=click.Path(exists=True, path_type=Path), required=True
-)
+@click.option("--target-dir", type=click.Path(path_type=Path), required=True)
 def generate_html(content_dir: Path, target_dir: Path):
+    target_dir.mkdir(parents=True, exist_ok=True)
     config = parse_config(content_dir)
     render_links_site(config, target_dir)
