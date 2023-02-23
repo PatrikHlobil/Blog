@@ -6,7 +6,7 @@ repo_url: https://github.com/PatrikHlobil/Blog
 
 nav:
 - Home: index.md
-- Links: sites/links.html
+- Links: sites/links.md
 
 plugins:
 - search
