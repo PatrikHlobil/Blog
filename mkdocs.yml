@@ -6,10 +6,11 @@ repo_url: https://github.com/PatrikHlobil/Blog
 
 nav:
 - Home: index.md
-- Links: sites/links.md
+- Links: links.md
 
 plugins:
-- search
+- search:
+    lang: en
 
 theme:
   name: material
@@ -18,4 +19,11 @@ theme:
   features:
   - search.highlight
   - search.suggest
+  - search.share
+  - toc.follow
   - toc.integrate
+  - navigation.instant
+
+markdown_extensions:
+- toc:
+    permalink: true

@@ -4,4 +4,4 @@ I am a **data engineer** living in *Karlsruhe, Germany*. My passions are history
 
 ## Content
 
-- [Links](sites/links.md)
+- [Links](links.md)

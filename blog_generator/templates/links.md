@@ -5,13 +5,15 @@
 
 [{{ link.link }}]({{ link.link }})
 
-#### Tags:
+**Tags:**
+
 {% for tag in link.tags %}
  - {{ tag }}
 {% endfor %}
 
 {% if link.authors %}
-#### Authors:
+**Authors:**
+
 {% for author in link.authors %}
  - {{ author }}
 {% endfor %}
