@@ -3,7 +3,7 @@ name: Publish to Github Pages
 on: [push, pull_request]
 
 jobs:
-  pre-commit:
+  publish-to-github-pages:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -19,7 +19,7 @@ jobs:
         rm -rf docs
         poetry install
         poetry run generate-html --content-dir content --target-dir docs/sites
-        mkdocs build -d docs
+        poetry run mkdocs build -d docs
     - name: Update Github Pages
       run: |
         git config --global user.email "patrik.hlobil@gmail.com"
