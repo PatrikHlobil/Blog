@@ -28,4 +28,4 @@ jobs:
       run: |
         poetry install
         poetry run generate-html --content-dir content --target-dir docs/sites
-        poetry run mkdocs gh-deploy--force
+        poetry run mkdocs gh-deploy --force
