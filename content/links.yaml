@@ -89,7 +89,7 @@
   - pydantic
   link: https://github.com/koxudaxi/datamodel-code-generator
   date: 2023-02-22
-- title:
+- title: Pytest tips and tricks
   authors: [Brian Okken]
   tags:
   - pytest
