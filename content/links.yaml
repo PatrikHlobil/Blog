@@ -95,3 +95,10 @@
   - pytest
   link: https://pythontest.com/pytest-tips-tricks/
   date: 2023-02-27
+- title: Feature Branches And Toggles In A Post-GitHub World
+  authors: [Sam Newman]
+  tags:
+  - git
+  - development
+  link: https://samnewman.io/talks/branching-and-feature-toggles/
+  date: 2023-03-01
