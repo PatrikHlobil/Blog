@@ -7,10 +7,14 @@ repo_url: https://github.com/PatrikHlobil/Blog
 nav:
 - Home: index.md
 - Links: links.md
+- Blog:
+  - blog/index.md
 
 plugins:
 - search:
     lang: en
+- blog:
+    blog_toc: true
 
 theme:
   name: material
