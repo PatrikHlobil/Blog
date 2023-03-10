@@ -9,7 +9,3 @@ class Link(BaseModel):
     tags: conlist(str, min_items=1)
     link: HttpUrl
     date: date
-
-
-class Config(BaseModel):
-    links: list[Link]

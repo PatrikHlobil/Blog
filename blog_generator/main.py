@@ -3,7 +3,8 @@ from pathlib import Path
 import click
 
 from blog_generator.generator.links import render_links_site
-from blog_generator.models.validate import parse_config
+
+RELATIVE_LINK_PATH = "links.yaml"
 
 
 @click.command()
@@ -11,7 +12,7 @@ from blog_generator.models.validate import parse_config
     "--content-dir", type=click.Path(exists=True, path_type=Path), required=True
 )
 @click.option("--target-dir", type=click.Path(path_type=Path), required=True)
-def generate_html(content_dir: Path, target_dir: Path):
-    target_dir.mkdir(parents=True, exist_ok=True)
-    config = parse_config(content_dir)
-    render_links_site(config, target_dir)
+def generate_content(content_dir: Path, target_dir: Path):
+    render_links_site(
+        links_filepath=content_dir / RELATIVE_LINK_PATH, target_dir=target_dir
+    )

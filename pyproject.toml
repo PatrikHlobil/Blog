@@ -24,7 +24,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-generate-content = 'blog_generator.main:generate_html'
+generate-content = 'blog_generator.main:generate_content'
 
 
 [tool.ruff]

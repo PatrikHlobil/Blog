@@ -1,9 +1,8 @@
 ---
 date: 2023-03-08
-categories:
-  - Python
-  - Multiprocessing
-  - ffspec
+categories: Python
+            Multiprocessing
+            ffspec
 ---
 
 # Caution with Multiprocessing and ffspec Filesystems in Python

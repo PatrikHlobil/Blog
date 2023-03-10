@@ -21,3 +21,4 @@ repos:
   hooks:
   - id: pretty-format-yaml
     args: [--autofix, --indent, '2']
+    exclude: mkdocs.yml
