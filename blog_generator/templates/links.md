@@ -3,7 +3,7 @@
 {% for link in links %}
 ## {{ link.title }}
 
-[{{ link.link }}]({{ link.link }})
+<a href="{{ link.link }}" target="_blank">{{ link.link }}</a>
 
 **Tags:**
 

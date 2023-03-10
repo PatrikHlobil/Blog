@@ -1,4 +1,4 @@
-site_name: Blog of Patrik Hlobil
+site_name: Homepage of Patrik Hlobil
 
 # Repository
 repo_name: Blog
@@ -7,18 +7,16 @@ repo_url: https://github.com/PatrikHlobil/Blog
 nav:
 - Home: index.md
 - Links: links.md
-- Blog:
-  - blog/index.md
+- '... | blogs/*'
 
 plugins:
 - search:
     lang: en
-- blog:
-    blog_toc: true
+- awesome-pages
 
 theme:
   name: material
-  logo: https://avatars.githubusercontent.com/u/31643597?v=4
+  logo: static/portrait.jpg
   favicon: static/favicon-32x32.png
   features:
   - search.highlight
@@ -31,3 +29,12 @@ theme:
 markdown_extensions:
 - toc:
     permalink: true
+- attr_list
+- admonition
+- md_in_html
+- pymdownx.details
+- pymdownx.superfences:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: !%21python/name:pymdownx.superfences.fence_code_format

@@ -13,14 +13,18 @@ click = "^8.1.3"
 pyyaml = "^6.0"
 mkdocs = "^1.4.2"
 mkdocs-material = "^9.0.13"
+mkdocs-awesome-pages-plugin = "^2.8.0"
 
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-generate-html = 'blog_generator.main:generate_html'
+generate-content = 'blog_generator.main:generate_html'
 
 
 [tool.ruff]

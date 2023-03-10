@@ -46,7 +46,7 @@
   tags:
   - parquet
   - big data
-  link: https://arrow.apache.org/blog/2023/12/26/querying-parquet-with-millisecond-latency/
+  link: https://arrow.apache.org/blog/2022/12/26/querying-parquet-with-millisecond-latency/
   date: 2023-02-22
 - title: The Origins of Python
   authors: [Lambert Meertens]
