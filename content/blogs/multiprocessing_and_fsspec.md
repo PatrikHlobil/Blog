@@ -80,7 +80,7 @@ classDiagram
 ```
 
 [This line](https://github.com/fsspec/filesystem_spec/blob/2023.3.0/fsspec/spec.py#L70) in the `_Cached` base is responsible for removing all existing attributes on the class instance when it will be forked for the child process:
-```python
+```python hl_lines="5 6 7"
 class _Cached(type):
     ...
     def __call__(cls, *args, **kwargs):

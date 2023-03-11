@@ -1,5 +1,10 @@
-???+ note
+**Date**: {{ blog_data.date.strftime('%Y-%m-%d') }}
 
-    Author
+**Tags:**
+{% for category in blog_data.categories %}
+- {{ category -}}
+  {% endfor %}
 
-{{ blog_content }}
+<hr>
+
+{{ blog_data.content }}
