@@ -12,6 +12,7 @@ nav:
 plugins:
 - search:
     lang: en
+    separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
 - awesome-pages
 
 theme:
