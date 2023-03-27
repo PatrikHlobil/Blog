@@ -109,3 +109,10 @@
   - trigger-rules
   link: https://marclamberti.com/blog/airflow-trigger-rules-all-you-need-to-know/
   date: 2023-03-08
+- title: Understanding Python metaclasses
+  authors: [Ionel Cristian Mărieș]
+  tags:
+  - python
+  - metaclasses
+  link: https://blog.ionelmc.ro/2015/02/09/understanding-python-metaclasses/
+  date: 2023-03-27

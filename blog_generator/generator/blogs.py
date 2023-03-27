@@ -37,18 +37,26 @@ def _prepare_target_directory(target_dir: Path):
 
 
 def _get_blog_data(blogs_directory: Path) -> Iterator[BlogData]:
-    markdown_processor = markdown.Markdown(extensions=["meta"])
+    markdown_processor = markdown.Markdown(extensions=["meta", "toc"])
     for blog_path in blogs_directory.glob("*.md"):
         markdown_processor.convert(blog_path.read_text())
-        yield BlogData(
-            file_name=blog_path.name,
-            content="\n".join(markdown_processor.lines),
-            date=datetime.strptime(markdown_processor.Meta["date"][0], "%Y-%m-%d"),
-            categories=markdown_processor.Meta["categories"],
-            draft=False
-            if "draft" not in markdown_processor.Meta
-            else markdown_processor.Meta["draft"],
-        )
+        yield _extract_blog_data(markdown_processor)
+
+
+def _determine_filename_from_title(markdown_processor: markdown.Markdown):
+    return markdown_processor.toc_tokens[0]["name"] + ".md"
+
+
+def _extract_blog_data(markdown_processor: markdown.Markdown) -> BlogData:
+    return BlogData(
+        file_name=_determine_filename_from_title(markdown_processor),
+        content="\n".join(markdown_processor.lines),
+        date=datetime.strptime(markdown_processor.Meta["date"][0], "%Y-%m-%d"),
+        categories=markdown_processor.Meta["categories"],
+        draft=False
+        if "draft" not in markdown_processor.Meta
+        else markdown_processor.Meta["draft"],
+    )
 
 
 def _get_blog_template():
