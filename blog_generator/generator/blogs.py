@@ -36,21 +36,32 @@ def _prepare_target_directory(target_dir: Path):
         path.unlink()
 
 
+def _remove_metadata(file_content: str) -> str:
+    seperator = "---\n"
+    if file_content.strip().startswith(seperator):
+        return seperator.join(file_content.split(seperator)[2:]).strip()
+    else:
+        return file_content.strip()
+
+
 def _get_blog_data(blogs_directory: Path) -> Iterator[BlogData]:
     markdown_processor = markdown.Markdown(extensions=["meta", "toc"])
     for blog_path in blogs_directory.glob("*.md"):
-        markdown_processor.convert(blog_path.read_text())
-        yield _extract_blog_data(markdown_processor)
+        markdown_processor.convert(file_content := blog_path.read_text())
+        content_without_metadata = _remove_metadata(file_content)
+        yield _extract_blog_data(markdown_processor, content_without_metadata)
 
 
 def _determine_filename_from_title(markdown_processor: markdown.Markdown):
     return markdown_processor.toc_tokens[0]["name"] + ".md"
 
 
-def _extract_blog_data(markdown_processor: markdown.Markdown) -> BlogData:
+def _extract_blog_data(
+    markdown_processor: markdown.Markdown, markdown_content: str
+) -> BlogData:
     return BlogData(
         file_name=_determine_filename_from_title(markdown_processor),
-        content="\n".join(markdown_processor.lines),
+        content=markdown_content,
         date=datetime.strptime(markdown_processor.Meta["date"][0], "%Y-%m-%d"),
         categories=markdown_processor.Meta["categories"],
         draft=False

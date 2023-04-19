@@ -18,6 +18,8 @@ mkdocs-awesome-pages-plugin = "^2.8.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
+ipdb = "^0.13.13"
+rich = "^13.3.4"
 
 [build-system]
 requires = ["poetry-core"]

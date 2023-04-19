@@ -43,6 +43,7 @@ markdown_extensions:
 - toc:
     permalink: true
 - attr_list
+- footnotes
 - admonition
 - md_in_html
 - pymdownx.details
@@ -51,5 +52,7 @@ markdown_extensions:
       - name: mermaid
         class: mermaid
         format: !!python/name:pymdownx.superfences.fence_code_format
+- pymdownx.tabbed:
+    alternate_style: true
 
 extra_css: [static/custom.css]
