@@ -116,3 +116,11 @@
   - metaclasses
   link: https://blog.ionelmc.ro/2015/02/09/understanding-python-metaclasses/
   date: 2023-03-27
+- title: 'The Kernel Cookbook: Advice on Covariance functions'
+  authors: []
+  tags:
+  - outlier detection
+  - gaussian process
+  - kernel
+  link: https://www.cs.toronto.edu/~duvenaud/cookbook/
+  date: 2023-04-19
