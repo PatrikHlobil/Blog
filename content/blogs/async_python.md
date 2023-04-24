@@ -1,6 +1,5 @@
 ---
-draft: true
-date: 2023-03-13
+date: 2023-04-23
 categories: async
             python
 ---
@@ -352,7 +351,6 @@ Let us now have a look at the `sleep` example:
     0:00:02.001648: Finished work for number=3
     0:00:02.001660: Finished work for number=4
     Finished program after 0:00:02.002334
-
     ```
 
 Similar to the `threading` and `multiprocessing` case, we could speed up the program by about a factor 5 here. The key differences here is the way we layout our program:
@@ -538,8 +536,169 @@ This async version is about 50 times faster than the previous one! As can be see
   <figcaption>Async Execution Flow for Pokemon API Example</figcaption>
 </figure>
 
-### 
+### Building async pipeline
 
+So far, we used `asyncio.gather` or `asyncio.create_task` + `wait task` to create tasks in parallel. However, for this to work, we have to know which tasks we want to execute in advance. Let us now consider an example, where we have a **slow service**, that serves us with the URLs to request the Pokemon details:
+=== "Code"
+
+    ```python title="pokemon_pipeline.py"
+    import asyncio
+    import datetime
+    from typing import AsyncIterator
+    
+    import httpx
+    
+    
+    async def get_pokemons(client: httpx.AsyncClient) -> AsyncIterator[dict]:
+        all_pokemon_response = await client.get(
+            "https://pokeapi.co/api/v2/pokemon", params={"limit": 10000}
+        )
+        all_pokemon_response.raise_for_status()
+        for pokemon in all_pokemon_response.json()["results"]:
+            print(f"Get Url for Pokemon {pokemon['name']}")
+            # This is a slow producer, so we have to sleep:
+            await asyncio.sleep(0.01)
+            yield pokemon
+    
+    
+    async def print_pokemon_details(client: httpx.AsyncClient, pokemon: dict[str, str]):
+        print(f"Get information for `{pokemon['name']}`")
+        pokemon_details_response = await client.get(pokemon["url"])
+        pokemon_details_response.raise_for_status()
+        pokemon_details = pokemon_details_response.json()
+        print(
+            f'ID: {pokemon_details["id"]}, Name: {pokemon_details["name"]}, Height: {pokemon_details["height"]}, Weight: {pokemon_details["weight"]}'
+        )
+    
+    
+    async def main():
+        async with httpx.AsyncClient(base_url="") as client:
+            pokemons = get_pokemons(client)
+            await asyncio.gather(
+                *[print_pokemon_details(client, pokemon) async for pokemon in pokemons]
+            )
+    
+    
+    if __name__ == "__main__":
+        start_time = datetime.datetime.now()
+        asyncio.run(main())
+        print(f"Finished program after {datetime.datetime.now() - start_time}")
+    ```
+
+=== "Output"
+
+    ``` 
+    >>> python3 pokemon_pipeline.py
+    
+        Get Url for Pokemon bulbasaur
+        Get Url for Pokemon ivysaur
+        Get Url for Pokemon venusaur
+        ...
+        Get information for `bulbasaur`
+        Get information for `ivysaur`
+        Get information for `venusaur`
+        ...
+        ID: 10084, Name: pikachu-libre, Height: 4, Weight: 60
+        ID: 879, Name: copperajah, Height: 30, Weight: 6500
+        Finished program after 0:00:18.303518
+    ```
+
+As can be seen, we first get all Pokemon URLs and after that we start our asynchronous HTTP Calls to get the Pokemon Details. However, there is a way to already start the downloads of the details when we get our first URLs by using a Queue Mechanism:
+
+
+=== "Code"
+
+    ```python title="pokemon_pipeline.py"
+    import asyncio
+    import datetime
+    from typing import AsyncIterator
+    
+    import httpx
+    
+    
+    async def pokemons_producer(
+            client: httpx.AsyncClient, pokemons: asyncio.Queue
+    ) -> AsyncIterator[dict]:
+        all_pokemon_response = await client.get(
+            "https://pokeapi.co/api/v2/pokemon", params={"limit": 10000}
+        )
+        all_pokemon_response.raise_for_status()
+        for pokemon in all_pokemon_response.json()["results"]:
+            print(f"Get Url for Pokemon {pokemon['name']}")
+            # This is a slow producer, so we have to sleep:
+            await asyncio.sleep(0.01)
+            await pokemons.put(pokemon)
+        await pokemons.put(None)
+    
+    
+    async def print_pokemon_details(client: httpx.AsyncClient, pokemon: dict):
+        print(f"Get information for `{pokemon['name']}`")
+        pokemon_details_response = await client.get(pokemon["url"])
+        pokemon_details_response.raise_for_status()
+        pokemon_details = pokemon_details_response.json()
+        print(
+            f'ID: {pokemon_details["id"]}, Name: {pokemon_details["name"]}, Height: {pokemon_details["height"]}, Weight: {pokemon_details["weight"]}'
+        )
+    
+    
+    async def pokemon_details_consumer(client: httpx.AsyncClient, pokemons: asyncio.Queue):
+        consumer_active = True
+        while consumer_active:
+            await asyncio.sleep(0.05)
+            pokemons_to_process = []
+            while not pokemons.empty():
+                if (pokemon := await pokemons.get()) is not None:
+                    pokemons_to_process.append(pokemon)
+                else:
+                    consumer_active = False
+            await asyncio.gather(
+                *(print_pokemon_details(client, pokemon) for pokemon in pokemons_to_process)
+            )
+    
+    
+    async def main():
+        async with httpx.AsyncClient(base_url="") as client:
+            pokemons = asyncio.Queue()
+            pokemon_producer_task = asyncio.create_task(pokemons_producer(client, pokemons))
+            pokemon_details_consumer_task = asyncio.create_task(
+                pokemon_details_consumer(client, pokemons)
+            )
+            await asyncio.gather(*[pokemon_producer_task, pokemon_details_consumer_task])
+    
+    
+    if __name__ == "__main__":
+        start_time = datetime.datetime.now()
+        asyncio.run(main())
+        print(f"Finished program after {datetime.datetime.now() - start_time}")
+    
+    ```
+
+=== "Output"
+
+    ``` 
+    >>> python3 pokemon_pipeline.py
+
+    Get Url for Pokemon bulbasaur
+    Get Url for Pokemon ivysaur
+    Get Url for Pokemon venusaur
+    Get Url for Pokemon charmander
+    Get information for `bulbasaur`
+    Get information for `ivysaur`
+    Get information for `venusaur`
+    Get information for `charmander`
+    Get Url for Pokemon charmeleon
+    Get Url for Pokemon charizard
+    ID: 1, Name: bulbasaur, Height: 7, Weight: 69
+    Get Url for Pokemon squirtle
+    Get Url for Pokemon wartortle
+    Get Url for Pokemon blastoise
+    ID: 2, Name: ivysaur, Height: 10, Weight: 130
+    ID: 4, Name: charmander, Height: 6, Weight: 85
+    ...
+    Finished program after 0:00:15.070663
+    ```
+
+Here, we have a producer (generates the Pokemon Details URLs) and a consumer task (exports details from URL). They communicate with each other via an `asyncio.Queue`, such that both can operate in parallel and we can start extracting the Pokemon Details as soon as the first URL has been published by the **produced task**. Using the same idea, it is then of course possible to generate a cascade of processes, where each intermediate task *consumes* from one task and *produces* objects that will then be processed by the next task.
 
 
 [^1]: It is usually better to use the builtin [timeit](https://docs.python.org/3/library/timeit.html) module for the extraction of execution times, however in this example just running the code is sufficient to get an idea of the key differences in performance. The benchmarks have been performed on a *Macbook Pro 13 with M1 chip*.
