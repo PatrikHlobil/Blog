@@ -4,11 +4,20 @@ categories: async
             python
 ---
 
+
 # Async Python
+
+![Async Python](images/async_python.png){ align=right }
 
 ## Parallelism in Python
 
-There exists 3 distinct ways to parallelize code in Python, namely **threading, multiprocessing, and async**. Let us quickly discuss the key differences. For this, we try to parallelize the following 2 code examples:
+
+There exists 3 distinct ways to parallelize code in Python, namely **threading, multiprocessing, and async**. All 3 methods are based upon a different idea. However, the first 2 are a more indirect way to get parallelism, where the operating system's scheduler is involved, whereas the later introduces a completely new paradigm for programming in python (`async/await)`. 
+
+In this article, we will quickly introduce each of the concepts, apply them for 2 code examples and performing benchmarks to compare them. Let us first introduce the 2 scripts that we are going to parallelize. 
+
+The first example `sleep.py` introduces a simple script, that executed a function **do_work** 5 times. The function itself just sleeps for 2 seconds, mocking the waiting to an external resource like a database of an HTTPS response:
+
 
 ```python title="sleep.py"
 import time
@@ -27,7 +36,7 @@ for i in range(5):
 print(f"Finished program after {datetime.datetime.now() - start_time}")
 ```
 
-
+The second example `hard_work.py` has the same structure, however the Python function **do_real_work** performs actual work on the CPU and calculates a sum using a for loop.
 
 ```python title="hard_work.py"
 import datetime
