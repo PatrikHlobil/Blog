@@ -706,4 +706,4 @@ Here, we have a producer (generates the Pokemon Details URLs) and a consumer tas
 
 [^1]: It is usually better to use the builtin [timeit](https://docs.python.org/3/library/timeit.html) module for the extraction of execution times, however in this example just running the code is sufficient to get an idea of the key differences in performance. The benchmarks have been performed on a *Macbook Pro 13 with M1 chip*.
 
-[^2]: Note that you can either use the **builtin** [asyncio event loop](https://docs.python.org/3/library/asyncio-eventloop.html) or alternative implemenations like [uvloop](https://github.com/MagicStack/uvloop). 
+[^2]: Note that you can either use the **builtin** [asyncio event loop](https://docs.python.org/3/library/asyncio-eventloop.html) or alternative implementations like [uvloop](https://github.com/MagicStack/uvloop). 
