@@ -183,7 +183,10 @@ However, when we do the same for the other example:
 
 we still need 11 seconds like in the synchronous execution. The reason for this lies in the way **threading** is handled by the CPython interpreter. Due to the **Global Interpreter Lock** (GIL), Python ensures that at each moment only one thread can be actively executing the code. Therefore, we are executing multiple functions in parallel, but we are effectively still using only 1 core at a time. This can be seen in the image below.
 
-![Threading](images/threading.svg)
+<figure markdown>
+  ![Threading and the GIL](images/threading.svg){ width="1000" }
+  <figcaption>Work of a Python code with threads (GIL blocking of true parallelism)</figcaption>
+</figure>
 
 
 In the sleep example above, the function was basically doing nothing except waiting (mimicking for example a wait time due to a database or HTTP request). Therefore, the parallel execution works fine, because there is no **real work** to be done.
@@ -603,7 +606,7 @@ So far, we used `asyncio.gather` or `asyncio.create_task` + `wait task` to creat
         Finished program after 0:00:18.303518
     ```
 
-As can be seen, we first get all Pokemon URLs and after that we start our asynchronous HTTP Calls to get the Pokemon Details. However, there is a way to already start the downloads of the details when we get our first URLs by using a Queue Mechanism:
+As can be seen in the *output* , we first get all Pokemon URLs and after that we start our asynchronous HTTP Calls to get the Pokemon Details. This is **not** what we want. However, there is a way to already start the downloads of the details when we get our first URLs by using a Queue Mechanism:
 
 
 === "Code"
