@@ -14,6 +14,7 @@ pyyaml = "^6.0"
 mkdocs = "^1.4.2"
 mkdocs-material = "^9.0.13"
 mkdocs-awesome-pages-plugin = "^2.8.0"
+beautifulsoup4 = "^4.12.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -27,6 +28,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 generate-content = 'blog_generator.main:generate_content'
+add-link = 'blog_generator.tools.add_link:add_link'
 
 
 [tool.ruff]
