@@ -3,8 +3,9 @@ date: 2023-06-12
 categories: markdown
             presentation
 ---
+# Marp: Markdown Presentation Ecosystem
 
-# What is Marp?
+## What is Marp?
 
 !!! quote
 
@@ -12,21 +13,23 @@ categories: markdown
 
 Here you find a few good references if you wish to get started using **Marp**:
 
-- https://marp.app/
-- https://marpit.marp.app/
-- https://chris-ayers.com/2023/03/31/customizing-marp
-- https://www.youtube.com/watch?v=EzQ-p41wNEE
+- [https://marp.app/](https://marp.app/)
+- [https://marpit.marp.app/](https://marpit.marp.app/)
+- [https://chris-ayers.com/2023/03/31/customizing-marp](https://chris-ayers.com/2023/03/31/customizing-marp)
+- [https://www.youtube.com/watch?v=EzQ-p41wNEE](https://www.youtube.com/watch?v=EzQ-p41wNEE)
 
-# How to build a cool presentation
+## How to build a cool presentation
 
 **Marp** is a really powerful tool to build an HTML presentation using Markdown. It can be developed inside VS Code (see e.g. https://www.youtube.com/watch?v=EzQ-p41wNEE) and the HTML can be directly exported there.
 
-Let me give you an example presentation that shows how easy it is. The resulting presentation can be accessed
+Let me give you an example presentation that shows how easy it is: 
 
-[Marp Example Presenation](images/marp-presentation.html)
+<iframe src="../images/marp-presentation.html" title="Marp Presentation" width=800 height=600></iframe>
+
+:material-presentation-play: [Marp Example Presenation](images/marp-presentation.html)
 
 ### Example:
-~~~markdown
+~~~markdown 
 ---
 paginate: true
 marp: true
