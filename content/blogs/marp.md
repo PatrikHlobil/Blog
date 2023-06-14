@@ -143,28 +143,26 @@ $$
 
 # Custom Backgrounds
 
-![bg](https://image.slidesdocs.com/responsive-images/background/technology-clean-business-geometric-simple-blue-powerpoint-background_e3130f8dc2__960_540.jpg)
+![bg](images/background.png)
 
-Use **Image Directives**:
+Use **Image Directives** (local or web-resource):
 
 ```md
-![bg](https://image.slidesdocs.com/responsive-images/background/
-technology-clean-business-geometric-simple-blue-powerpoint-background_e3130f8dc2__960_540.jpg)
-
+![bg](images/background.png)
 ```
 
 
 # Custom Backgrounds
 
-![bg](https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=170667a&w=0&k=20&c=vKqLcyX0Qlrh8A351AA3-h2s5P46CZjh8JR6_QyV-D4=)
+![bg](images/cats.jpg)
 
-![bg](https://www.pexels.com/photo/2662116/download/)
+![bg](images/sea.jpg)
 **Multiple Backgrounds!!!**
 
 ```md
-![bg](https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=170667a&w=0&k=20&c=vKqLcyX0Qlrh8A351AA3-h2s5P46CZjh8JR6_QyV-D4=)
+![bg](images/cats.jpg)
 
-![bg](https://www.pexels.com/photo/2662116/download/)
+![bg](images/sea.jpg)
 ```
 
 
@@ -172,27 +170,27 @@ technology-clean-business-geometric-simple-blue-powerpoint-background_e3130f8dc2
 
 Put Images to the left
 
-![bg left](https://www.pexels.com/photo/2662116/download/)
+![bg left](images/cats.jpg)
 ```md
-![bg left](https://www.pexels.com/photo/2662116/download/)
+![bg left](images/cats.jpg)
 ```
 
 # Images
 
 ... or to the right
 
-![bg right](https://www.pexels.com/photo/2662116/download/)
+![bg right](images/cats.jpg)
 ```md
-![bg right](https://www.pexels.com/photo/2662116/download/)
+![bg right](images/cats.jpg)
 ```
 
 # Images
 
 ... or adjust the width ...
 
-![bg left:25%](https://www.pexels.com/photo/2662116/download/)
+![bg left:25%](images/cats.jpg)
 ```md
-![bg left:25%](https://www.pexels.com/photo/2662116/download/)
+![bg left:25%](images/cats.jpg)
 ```
 
 
@@ -200,21 +198,20 @@ Put Images to the left
 
 ... or apply filters:
 
-![bg left sepia](https://www.pexels.com/photo/2662116/download/)
-![bg right blur](https://www.pexels.com/photo/2662116/download/)
+![bg left sepia](images/sea.jpg)
+![bg right blur](images/sea.jpg)
 ```md
-![bg left sepia](https://www.pexels.com/photo/2662116/download/)
-![bg right blur](https://www.pexels.com/photo/2662116/download/)
+![bg left sepia](images/sea.jpg)
+![bg right blur](images/sea.jpg)
 ```
 
 
 # GIFS !!!
 ```
-![bg right](https://media2.giphy.com/media/1gXiBFTkANAddVgBKn/giphy.webp?cid=ecf05e47ar3gqt8z2h4b0n02u19dh257gwlwqge7zufd3sqd&ep=v1_gifs_search&rid=giphy.webp&ct=g)
-![bg right](https://media0.giphy.com/media/SbtWGvMSmJIaV8faS8/200w.webp?cid=ecf05e47i5eyozrdt5aytc41m0o7ea6uxu6ck2088uxo4ojz&ep=v1_gifs_search&rid=200w.webp&ct=g)
+![bg right](https://media0.giphy.com/media/SbtWGvMSmJIaV8faS8/200w.webp?
+cid=ecf05e47i5eyozrdt5aytc41m0o7ea6uxu6ck2088uxo4ojz&ep=v1_gifs_search&rid=200w.webp&ct=g)
 ```
-![bg right](https://media2.giphy.com/media/1gXiBFTkANAddVgBKn/giphy.webp?cid=ecf05e47ar3gqt8z2h4b0n02u19dh257gwlwqge7zufd3sqd&ep=v1_gifs_search&rid=giphy.webp&ct=g)
-![bg right](https://media0.giphy.com/media/SbtWGvMSmJIaV8faS8/200w.webp?cid=ecf05e47i5eyozrdt5aytc41m0o7ea6uxu6ck2088uxo4ojz&ep=v1_gifs_search&rid=200w.webp&ct=g)
+![bg](https://media0.giphy.com/media/SbtWGvMSmJIaV8faS8/200w.webp?cid=ecf05e47i5eyozrdt5aytc41m0o7ea6uxu6ck2088uxo4ojz&ep=v1_gifs_search&rid=200w.webp&ct=g)
 
 
 # Mermaid Support
