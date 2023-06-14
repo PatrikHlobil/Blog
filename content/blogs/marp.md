@@ -143,26 +143,26 @@ $$
 
 # Custom Backgrounds
 
-![bg](images/background.png)
+![bg](https://patrikhlobil.github.io/Blog/blogs/images/background.png)
 
 Use **Image Directives** (local or web-resource):
 
 ```md
-![bg](images/background.png)
+![bg](https://patrikhlobil.github.io/Blog/blogs/images/background.png)
 ```
 
 
 # Custom Backgrounds
 
-![bg](images/cats.jpg)
+![bg](https://patrikhlobil.github.io/Blog/blogs/images/cats.jpg)
 
-![bg](images/sea.jpg)
+![bg](https://patrikhlobil.github.io/Blog/blogs/images/sea.jpg)
 **Multiple Backgrounds!!!**
 
 ```md
-![bg](images/cats.jpg)
+![bg](https://patrikhlobil.github.io/Blog/blogs/images/cats.jpg)
 
-![bg](images/sea.jpg)
+![bg](https://patrikhlobil.github.io/Blog/blogs/images/sea.jpg)
 ```
 
 
@@ -170,27 +170,27 @@ Use **Image Directives** (local or web-resource):
 
 Put Images to the left
 
-![bg left](images/cats.jpg)
+![bg left](https://patrikhlobil.github.io/Blog/blogs/images/cats.jpg)
 ```md
-![bg left](images/cats.jpg)
+![bg left](https://patrikhlobil.github.io/Blog/blogs/images/cats.jpg)
 ```
 
 # Images
 
 ... or to the right
 
-![bg right](images/cats.jpg)
+![bg right](https://patrikhlobil.github.io/Blog/blogs/images/cats.jpg)
 ```md
-![bg right](images/cats.jpg)
+![bg right](https://patrikhlobil.github.io/Blog/blogs/images/cats.jpg)
 ```
 
 # Images
 
 ... or adjust the width ...
 
-![bg left:25%](images/cats.jpg)
+![bg left:25%](https://patrikhlobil.github.io/Blog/blogs/images/cats.jpg)
 ```md
-![bg left:25%](images/cats.jpg)
+![bg left:25%](https://patrikhlobil.github.io/Blog/blogs/images/cats.jpg)
 ```
 
 
@@ -198,11 +198,11 @@ Put Images to the left
 
 ... or apply filters:
 
-![bg left sepia](images/sea.jpg)
-![bg right blur](images/sea.jpg)
+![bg left sepia](https://patrikhlobil.github.io/Blog/blogs/images/sea.jpg)
+![bg right blur](https://patrikhlobil.github.io/Blog/blogs/images/sea.jpg)
 ```md
-![bg left sepia](images/sea.jpg)
-![bg right blur](images/sea.jpg)
+![bg left sepia](https://patrikhlobil.github.io/Blog/blogs/images/sea.jpg)
+![bg right blur](https://patrikhlobil.github.io/Blog/blogs/images/sea.jpg)
 ```
 
 
