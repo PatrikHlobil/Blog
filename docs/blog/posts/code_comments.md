@@ -1,7 +1,8 @@
 ---
 date: 2023-08-01
-categories: clean code
-            comments
+tags: 
+  - clean code
+  - comments
 ---
 
 
@@ -207,4 +208,3 @@ Sometimes, when working on code we find a part of the code that is not well writ
 #### 5. Warnings
 
 Sometimes, there is a strange side effect or just something that a user has to know before he is calling the function at hand. Here, a warning comment may be appropriate.
-

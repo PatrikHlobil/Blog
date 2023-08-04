@@ -7,13 +7,17 @@ repo_url: https://github.com/PatrikHlobil/Blog
 nav:
 - Home: index.md
 - Links: links.md
-- '... | blogs/*'
+- Blog:
+    - blog/index.md
 
 plugins:
 - search:
     lang: en
     separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
-- awesome-pages
+- blog:
+    draft_on_serve: false
+- tags
+
 
 theme:
   name: material

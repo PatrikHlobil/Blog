@@ -27,5 +27,4 @@ jobs:
     - name: Update Github Pages
       run: |
         poetry install
-        poetry run generate-content --content-dir content --target-dir docs
         poetry run mkdocs gh-deploy --force

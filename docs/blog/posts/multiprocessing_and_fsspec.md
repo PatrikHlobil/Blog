@@ -1,8 +1,9 @@
 ---
 date: 2023-03-08
-categories: Python
-            Multiprocessing
-            ffspec
+tags: 
+  - python
+  - multiprocessing
+  - ffspec
 ---
 
 ![](images/multiprocessing_python.png)

@@ -1,7 +1,8 @@
 ---
 date: 2023-06-12
-categories: markdown
-            presentation
+tags: 
+  - markdown
+  - presentation
 ---
 # Marp: Markdown Presentation Ecosystem
 

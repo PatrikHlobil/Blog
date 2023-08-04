@@ -1,9 +1,10 @@
 ---
 draft: true
 date: 2023-03-13
-categories: pytest
-            pyspark
-            testing
+tags: 
+  - pytest
+  - pyspark
+  - testing
 ---
 
 # Unit to System Testing of Pyspark Applications with Pytest
