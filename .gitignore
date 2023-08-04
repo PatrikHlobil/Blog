@@ -71,7 +71,6 @@ instance/
 # Mkdocs documentation
 docs/_build/
 docs/links.md
-docs/blogs/*.md
 
 # PyBuilder
 target/
@@ -130,3 +129,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .ruff_cache
+
+.idea
