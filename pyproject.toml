@@ -1,26 +1,31 @@
-[tool.poetry]
+[project]
 name = "blog-generator"
 version = "1.0.0"
 description = "Generator for creating the Blog"
-authors = ["Patrik.Hlobil <patrik.hlobil@gmail.com>"]
+authors = [{name = "Patrik Hlobil", email = "patrik.hlobil@gmail.com"}]
 readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "beautifulsoup4>=4.12.2,<5",
+    "click>=8.1.3,<9",
+    "pyyaml>=6.0,<7",
+    "requests>=2.31,<3",
+    "zensical>=0.0.62,<0.1",
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-click = "^8.1.3"
-pyyaml = "^6.0"
-mkdocs = "^1.4.2"
-mkdocs-awesome-pages-plugin = "^2.8.0"
-beautifulsoup4 = "^4.12.2"
-mkdocs-material = {version = "^9.2.0b3", allow-prereleases = true}
+[project.scripts]
+add-link = "tools.add_link:add_link"
 
+[dependency-groups]
+dev = ["pre-commit>=4.0,<5"]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["uv_build>=0.12.3,<0.13.0"]
+build-backend = "uv_build"
 
-[tool.poetry.scripts]
-add-link = 'tools.add_link:add_link'
+[tool.uv.build-backend]
+module-name = "tools"
+module-root = ""
 
 
 [tool.ruff]

@@ -1,10 +1,13 @@
 repos:
+- repo: https://github.com/astral-sh/uv-pre-commit
+  rev: 0.12.3
+  hooks:
+  - id: uv-lock
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v4.4.0
   hooks:
   - id: check-merge-conflict
   - id: check-yaml
-    exclude: mkdocs.yml
   - id: debug-statements
   - id: end-of-file-fixer
 - repo: https://github.com/psf/black
@@ -21,4 +24,4 @@ repos:
   hooks:
   - id: pretty-format-yaml
     args: [--autofix, --indent, '2']
-    exclude: mkdocs.yml
+    additional_dependencies: [setuptools<81]

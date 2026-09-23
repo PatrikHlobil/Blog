@@ -1,0 +1,54 @@
+[project]
+site_name = "Homepage of Patrik Hlobil"
+repo_name = "Blog"
+repo_url = "https://github.com/PatrikHlobil/Blog"
+nav = [
+  { Home = "index.md" },
+  { Links = "links.md" },
+  { Blog = "blog/index.md" },
+]
+extra_css = ["static/custom.css"]
+
+[project.plugins.search]
+separator = "[\\s\\-,:!=\\[\\]()\"/]+|(?!\\b)(?=[A-Z][a-z])|\\.(?!\\d)|&[lg]t;"
+
+[project.plugins.tags]
+
+[project.theme]
+variant = "classic"
+language = "en"
+logo = "static/portrait.jpg"
+favicon = "static/favicon-32x32.png"
+features = [
+  "search.highlight",
+  "search.suggest",
+  "search.share",
+  "toc.follow",
+  "toc.integrate",
+  "navigation.instant",
+  "content.code.copy",
+]
+
+[[project.theme.palette]]
+scheme = "default"
+toggle.icon = "material/weather-night"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+scheme = "slate"
+toggle.icon = "material/weather-sunny"
+toggle.name = "Switch to light mode"
+
+[project.markdown_extensions]
+toc.permalink = true
+attr_list = {}
+footnotes = {}
+admonition = {}
+md_in_html = {}
+pymdownx.details = {}
+pymdownx.superfences.custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
+pymdownx.tabbed.alternate_style = true
+pymdownx.emoji.emoji_index = "zensical.extensions.emoji.twemoji"
+pymdownx.emoji.emoji_generator = "zensical.extensions.emoji.to_svg"

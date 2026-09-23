@@ -6,25 +6,28 @@ on:
     - main
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   publish-to-github-pages:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python Version
-      uses: actions/setup-python@v4
+    - uses: actions/configure-pages@v6
+    - uses: actions/checkout@v7
+    - name: Install uv
+      uses: astral-sh/setup-uv@v9
       with:
-        python-version: 3.11
-    - uses: actions/cache@v2
+        version: 0.12.3
+        python-version: 3.14
+        enable-cache: true
+    - name: Build site
+      run: |
+        uv sync --locked --no-dev
+        uv run --no-dev zensical build --clean
+    - uses: actions/upload-pages-artifact@v5
       with:
-        key: ${{ github.ref }}
-        path: .cache
-    - name: Install poetry
-      run: |
-        curl -fsS https://install.python-poetry.org | python - -y
-    - name: Update Github Pages
-      run: |
-        poetry install
-        poetry run mkdocs gh-deploy --force
+        path: site
+    - uses: actions/deploy-pages@v5
+      id: deployment

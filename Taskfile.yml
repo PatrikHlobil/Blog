@@ -3,8 +3,8 @@ version: '3'
 tasks:
 
   install:
-    cmd: poetry install
+    cmd: uv sync
 
   run:
     cmds:
-    - poetry run mkdocs serve
+    - uv run zensical serve
