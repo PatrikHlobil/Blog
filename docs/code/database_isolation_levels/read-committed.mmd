@@ -1,12 +1,14 @@
 sequenceDiagram
-    User 1->>Database: INSERT INTO users (id,name) VALUES (1, "Peter")
+    User 1->>Database: ① INSERT INTO users (id,name) VALUES (1, "Peter")
     User 1->>Database: COMMIT
     Note over Database: User with id=1 has name "Peter"
-    User 2->>Database: SELECT name FROM users WHERE id=1
+    User 2->>Database: ② SELECT name FROM users WHERE id=1
     Database->>User 2: name="Peter"
-    User 1->>Database: UPDATE users SET name="Alice" where id=1
-    User 2->>Database: SELECT name FROM users WHERE id=1
+    User 1->>Database: ③ UPDATE users SET name="Alice" where id=1
+    User 2->>Database: ④ SELECT name FROM users WHERE id=1
     Database->>User 2: name="Peter"
-    User 1->>Database: COMMIT
-    User 2->>Database: SELECT name FROM users WHERE id=1
+    User 1->>Database: ⑤ COMMIT
+    User 2->>Database: ⑥ SELECT name FROM users WHERE id=1
     Database->>User 2: name="Alice"
+
+    # ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨

@@ -46,10 +46,25 @@ The weakest isolation level is called **Read-Committed** and is the default in P
 
 In **Read-Committed**, a transaction will only see changes that have been successfully committed by other transactions. Thus, any changes that are **not yet committed** are hidden for other transactions.
 
+Consider an example, where the name of a user is accessed by 2 users concurrently.
+
 ```mermaid
     --8<-- "docs/code/database_isolation_levels/read-committed.mmd"
 ```
 
+Here, we have the following interactions with the database:
+
+① User 1 inserts a user into the `users` database table with the name **Peter**.
+
+② User 2 reads the name of the user, which will return **Peter**.
+
+③ User 1 then starts a transaction and changes the name of the user to **Alice**.
+
+④ Concurrently, User 2 reads the user again, which will still return **Peter**, since the update is not yet committed (no "dirty reads")
+
+⑤ User 1 commits the changes, such that the name of the user is now **Alice** 
+
+⑥ User 2 reads the user name again, and now gets **Alice**.
 
 ## Conclusion
 
