@@ -1,17 +1,18 @@
 ---
 date: 2023-03-08
-tags: 
+categories: 
   - python
   - multiprocessing
   - ffspec
 ---
 
-![](images/multiprocessing_python.png)
 
 # Caution with Multiprocessing and ffspec Filesystems in Python
 Multiprocessing can be a great way of scaling Python applications beyond one CPU core, especially due slow speed compared to other lower-level languages like C or Java. However, one has to be very careful when passing Python class instance, especially if your are using a [fsspec](https://filesystem-spec.readthedocs.io/en/latest/) filesystem implementation. 
 
 **Note**: At time of writing of this article the newest `fsspec` release was [2023.3.0](https://github.com/fsspec/filesystem_spec/tree/2023.3.0).
+
+<!-- more -->
 
 ## The Problem 
 

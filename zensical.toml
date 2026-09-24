@@ -2,17 +2,15 @@
 site_name = "Homepage of Patrik Hlobil"
 repo_name = "Blog"
 repo_url = "https://github.com/PatrikHlobil/Blog"
-nav = [
-  { Home = "index.md" },
-  { Links = "links.md" },
-  { Blog = "blog/index.md" },
-]
 extra_css = ["static/custom.css"]
 
 [project.plugins.search]
 separator = "[\\s\\-,:!=\\[\\]()\"/]+|(?!\\b)(?=[A-Z][a-z])|\\.(?!\\d)|&[lg]t;"
 
-[project.plugins.tags]
+
+[project.plugins.blog]
+blog_toc = true
+post_excerpt = "required"
 
 [project.theme]
 variant = "classic"
@@ -52,3 +50,4 @@ pymdownx.superfences.custom_fences = [
 pymdownx.tabbed.alternate_style = true
 pymdownx.emoji.emoji_index = "zensical.extensions.emoji.twemoji"
 pymdownx.emoji.emoji_generator = "zensical.extensions.emoji.to_svg"
+pymdownx.snippets = {}

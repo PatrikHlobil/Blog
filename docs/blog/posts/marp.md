@@ -1,6 +1,6 @@
 ---
 date: 2023-06-12
-tags: 
+categories: 
   - markdown
   - presentation
 ---
@@ -11,6 +11,8 @@ tags:
 !!! quote
 
     [Marp](https://marp.app/) (also known as the Markdown Presentation Ecosystem) provides an intuitive experience for creating beautiful slide decks. You only have to focus on writing your story in a Markdown document.
+
+<!-- more -->
 
 Here you find a few good references if you wish to get started using **Marp**:
 

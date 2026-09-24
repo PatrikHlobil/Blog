@@ -1,12 +1,14 @@
 ---
 date: 2023-08-01
-tags: 
+categories: 
   - clean code
   - comments
 ---
 
 
 # 5 Reasons why Code Comments are a Code Smell 
+
+<!-- more -->
 ![Async Python](images/stop_comments.svg){ align=right }
 
 ## 1. Comments that just describe what is happening
