@@ -57,7 +57,6 @@ with multiprocessing.Pool(processes=2) as pool:
 # Print out store content from child processes:
 for message in messages:
     print(message)
-
 ```
 
 What we have here are two very simple classes `MyClass` and `MyFS` that just create an empty *dictionary* `store` attribute when instantiated. The key difference between these two classes is that `MyFS` is inherited from `fsspec.AbstractFileSystem`. We then create an instance of each of the two classes and add an entry to the `store` *dictionary*. Finally, we run a simple function in 2 child processes that just prints out the content of the `store` attribute. The resulting output of this script will be:
@@ -87,13 +86,13 @@ classDiagram
 ```python hl_lines="5 6 7"
 class _Cached(type):
     ...
+
     def __call__(cls, *args, **kwargs):
         ...
         if os.getpid() != cls._pid:
             # In a child process, this line is called and will clear all existing attributes:
-            cls._cache.clear()        
+            cls._cache.clear()
         ...
-        
 ```
 
 ## Possible solutions
@@ -144,7 +143,6 @@ with multiprocessing.Pool(processes=1) as pool:
 # Print out store content from child process:
 for message in messages:
     print(message)
-
 ```
 
 As can be seen, we define a container class `GithubFileSystemAdapter` that simply stores the data and implements a method for creating the filesystem. This container class is then passed to the child process, within which the `fsspec` filessystem object is created. It can then be safely used without the problems seen in the previous example.

@@ -29,7 +29,7 @@ module-root = ""
 
 
 [tool.ruff]
-select = [
+lint.select = [
     # Pyflakes
     "F",
     # Pycodestyle
@@ -39,5 +39,5 @@ select = [
     "I001"
 ]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 force-sort-within-sections = true

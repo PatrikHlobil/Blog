@@ -47,11 +47,12 @@ import datetime
 
 
 def do_real_work(number: int):
-    print(f"{datetime.datetime.now()-start_time}: Start work for {number=}")
+    print(f"{datetime.datetime.now() - start_time}: Start work for {number=}")
     output = 0
     for i in range(100_000_000):
         output += 1
-    print(f"{datetime.datetime.now()-start_time}: Finished work for {number=}")
+    print(f"{datetime.datetime.now() - start_time}: Finished work for {number=}")
+
 
 start_time = datetime.datetime.now()
 for i in range(5):
@@ -157,16 +158,18 @@ However, when we do the same for the other example:
     ```python title="hard_work.py"
     import datetime
     from threading import Thread
-    
+
+
     def do_real_work(number: int):
-        print(f"{datetime.datetime.now()-start_time}: Start work for {number=}")
+        print(f"{datetime.datetime.now() - start_time}: Start work for {number=}")
         output = 0
         for i in range(100_000_000):
             output += 1
-        print(f"{datetime.datetime.now()-start_time}: Finished work for {number=}")
-    
+        print(f"{datetime.datetime.now() - start_time}: Finished work for {number=}")
+
+
     start_time = datetime.datetime.now()
-    
+
     tasks = [Thread(target=do_real_work, args=(i,)) for i in range(5)]
     for task in tasks:
         task.start()
@@ -268,16 +271,18 @@ Real `multiprocessing` can be used in Python very similar to Threads. Note that 
     ```python title="hard_work.py"
     import datetime
     from multiprocessing import Process
-    
+
+
     def do_real_work(number: int):
-        print(f"{datetime.datetime.now()-start_time}: Start work for {number=}")
+        print(f"{datetime.datetime.now() - start_time}: Start work for {number=}")
         output = 0
         for i in range(100_000_000):
             output += 1
-        print(f"{datetime.datetime.now()-start_time}: Finished work for {number=}")
-    
+        print(f"{datetime.datetime.now() - start_time}: Finished work for {number=}")
+
+
     start_time = datetime.datetime.now()
-    
+
     tasks = [Process(target=do_real_work, args=(i,)) for i in range(5)]
     for task in tasks:
         task.start()
@@ -384,11 +389,11 @@ Similar to the `threading` and `multiprocessing` case, we could speed up the pro
 
     ```python title="hard_work.py"
     async def do_real_work(number: int):
-        print(f"{datetime.datetime.now()-start_time}: Start work for {number=}")
+        print(f"{datetime.datetime.now() - start_time}: Start work for {number=}")
         output = 0
         for i in range(100_000_000):
             output += 1
-        print(f"{datetime.datetime.now()-start_time}: Finished work for {number=}")
+        print(f"{datetime.datetime.now() - start_time}: Finished work for {number=}")
 
 
     async def main():
@@ -489,20 +494,20 @@ With a little change, the program can be refactored to be fully asynchronous:
     ```python title="parallel_async.py"
     import asyncio
     import datetime
-    
+
     import httpx
-    
-    
+
+
     async def print_pokemon_details(client: httpx.AsyncClient, pokemon: dict[str, str]):
         print(f"Get information for `{pokemon['name']}`")
         pokemon_details_response = await client.get(pokemon["url"])
         pokemon_details_response.raise_for_status()
         pokemon_details = pokemon_details_response.json()
         print(
-            f'ID: {pokemon_details["id"]}, Name: {pokemon_details["name"]}, Height: {pokemon_details["height"]}, Weight: {pokemon_details["weight"]}'
+            f"ID: {pokemon_details['id']}, Name: {pokemon_details['name']}, Height: {pokemon_details['height']}, Weight: {pokemon_details['weight']}"
         )
-    
-    
+
+
     async def main():
         async with httpx.AsyncClient(base_url="") as client:
             all_pokemon_response = await client.get(
@@ -510,12 +515,12 @@ With a little change, the program can be refactored to be fully asynchronous:
             )
             all_pokemon_response.raise_for_status()
             all_pokemon = all_pokemon_response.json()["results"]
-    
+
             await asyncio.gather(
                 *[print_pokemon_details(client, pokemon) for pokemon in all_pokemon]
             )
-    
-    
+
+
     if __name__ == "__main__":
         start_time = datetime.datetime.now()
         asyncio.run(main())
@@ -561,10 +566,10 @@ So far, we used `asyncio.gather` or `asyncio.create_task` + `wait task` to creat
     import asyncio
     import datetime
     from typing import AsyncIterator
-    
+
     import httpx
-    
-    
+
+
     async def get_pokemons(client: httpx.AsyncClient) -> AsyncIterator[dict]:
         all_pokemon_response = await client.get(
             "https://pokeapi.co/api/v2/pokemon", params={"limit": 10000}
@@ -575,26 +580,26 @@ So far, we used `asyncio.gather` or `asyncio.create_task` + `wait task` to creat
             # This is a slow producer, so we have to sleep:
             await asyncio.sleep(0.01)
             yield pokemon
-    
-    
+
+
     async def print_pokemon_details(client: httpx.AsyncClient, pokemon: dict[str, str]):
         print(f"Get information for `{pokemon['name']}`")
         pokemon_details_response = await client.get(pokemon["url"])
         pokemon_details_response.raise_for_status()
         pokemon_details = pokemon_details_response.json()
         print(
-            f'ID: {pokemon_details["id"]}, Name: {pokemon_details["name"]}, Height: {pokemon_details["height"]}, Weight: {pokemon_details["weight"]}'
+            f"ID: {pokemon_details['id']}, Name: {pokemon_details['name']}, Height: {pokemon_details['height']}, Weight: {pokemon_details['weight']}"
         )
-    
-    
+
+
     async def main():
         async with httpx.AsyncClient(base_url="") as client:
             pokemons = get_pokemons(client)
             await asyncio.gather(
                 *[print_pokemon_details(client, pokemon) async for pokemon in pokemons]
             )
-    
-    
+
+
     if __name__ == "__main__":
         start_time = datetime.datetime.now()
         asyncio.run(main())
@@ -628,12 +633,12 @@ As can be seen in the *output* , we first get all Pokemon URLs and after that we
     import asyncio
     import datetime
     from typing import AsyncIterator
-    
+
     import httpx
-    
-    
+
+
     async def pokemons_producer(
-            client: httpx.AsyncClient, pokemons: asyncio.Queue
+        client: httpx.AsyncClient, pokemons: asyncio.Queue
     ) -> AsyncIterator[dict]:
         all_pokemon_response = await client.get(
             "https://pokeapi.co/api/v2/pokemon", params={"limit": 10000}
@@ -645,18 +650,18 @@ As can be seen in the *output* , we first get all Pokemon URLs and after that we
             await asyncio.sleep(0.01)
             await pokemons.put(pokemon)
         await pokemons.put(None)
-    
-    
+
+
     async def print_pokemon_details(client: httpx.AsyncClient, pokemon: dict):
         print(f"Get information for `{pokemon['name']}`")
         pokemon_details_response = await client.get(pokemon["url"])
         pokemon_details_response.raise_for_status()
         pokemon_details = pokemon_details_response.json()
         print(
-            f'ID: {pokemon_details["id"]}, Name: {pokemon_details["name"]}, Height: {pokemon_details["height"]}, Weight: {pokemon_details["weight"]}'
+            f"ID: {pokemon_details['id']}, Name: {pokemon_details['name']}, Height: {pokemon_details['height']}, Weight: {pokemon_details['weight']}"
         )
-    
-    
+
+
     async def pokemon_details_consumer(client: httpx.AsyncClient, pokemons: asyncio.Queue):
         consumer_active = True
         while consumer_active:
@@ -670,8 +675,8 @@ As can be seen in the *output* , we first get all Pokemon URLs and after that we
             await asyncio.gather(
                 *(print_pokemon_details(client, pokemon) for pokemon in pokemons_to_process)
             )
-    
-    
+
+
     async def main():
         async with httpx.AsyncClient(base_url="") as client:
             pokemons = asyncio.Queue()
@@ -680,13 +685,12 @@ As can be seen in the *output* , we first get all Pokemon URLs and after that we
                 pokemon_details_consumer(client, pokemons)
             )
             await asyncio.gather(*[pokemon_producer_task, pokemon_details_consumer_task])
-    
-    
+
+
     if __name__ == "__main__":
         start_time = datetime.datetime.now()
         asyncio.run(main())
         print(f"Finished program after {datetime.datetime.now() - start_time}")
-    
     ```
 
 === "Output"

@@ -23,8 +23,8 @@ import os.path
 # Define path to executable:
 path = "/usr/bin/executable"
 
-# Extract directory: 
-d = os.path.dirname(path) 
+# Extract directory:
+d = os.path.dirname(path)
 
 # Print Directory of executable:
 print(d)
@@ -44,10 +44,16 @@ Often, we see code comments when the code deals with complex or nested logic:
 
 ```python
 # We do have to check, that the credit card of the user is not expired and that the user is solvent.
-if user.state.value == "solvent" and user.credit_card.get_expiration_dt < datetime.datetime.now().date:
+if (
+    user.state.value == "solvent"
+    and user.credit_card.get_expiration_dt < datetime.datetime.now().date
+):
     # If we process Visa cards, online payment service has to be enabled:
-    if not (user.credit_card.type == "Visa" and "online_payment" in user.credit_card.payment_services):
-        raise OnlinePaymentServiceNotEnabledException("Visa Payment not possible.") 
+    if not (
+        user.credit_card.type == "Visa"
+        and "online_payment" in user.credit_card.payment_services
+    ):
+        raise OnlinePaymentServiceNotEnabledException("Visa Payment not possible.")
     process_payment(user.credit_card, payment_details)
 else:
     raise PaymentException("...")
@@ -56,7 +62,7 @@ else:
 This is not optimal to read and also there is the danger, that the comments will be outdated (see below) after some time. It is in this case better to define small functions with a proper name that describe what happens within the code:
 
 ```python
-if is_solvent(user) and credit_card_is_active(credit_card:=user.credit_card):
+if is_solvent(user) and credit_card_is_active(credit_card := user.credit_card):
     if not (credit_card.type == "Visa" and online_payment_service_enabled(credit_card)):
         raise OnlinePaymentServiceNotEnabledException("Visa Payment not possible.")
     process_payment(credit_card, payment_details)
@@ -64,26 +70,27 @@ else:
     raise PaymentException("...")
 
 
-def is_solvent(user: User)->bool:
+def is_solvent(user: User) -> bool:
     return user.state.value == "solvent"
+
 
 def credit_card_is_active(credit_card: CreditCard) -> bool:
     return credit_card.get_expiration_dt < datetime.datetime.now().date
 
-def online_payment_service_enabled(credit_card: CreditCard)->bool:
+
+def online_payment_service_enabled(credit_card: CreditCard) -> bool:
     return "online_payment" in user.credit_card.payment_services
 ```
 
 
 ## 3. Comments that describe the implementation
 ```python
-
 def calculate_distance(x: Vector, y: Vector) -> float:
     """The distance is calculated by:
-            1. Calculate the difference between each components of the 2 vectors
-            2. Square the differences
-            3. Sum up 
-            4. Take the squareroot
+    1. Calculate the difference between each components of the 2 vectors
+    2. Square the differences
+    3. Sum up
+    4. Take the squareroot
     """
 
     square_sum = 0
@@ -91,7 +98,7 @@ def calculate_distance(x: Vector, y: Vector) -> float:
         difference = x[i] - y[i]
         square = difference**2
         square_sum += square
-    
+
     return sqrt(square_sum)
 ```
 
@@ -157,6 +164,7 @@ Now, let us look at the refactored code:
 import datetime
 
 MAXIMUM_TOKEN_LIFETIME_IN_SECONDS = 60 * 60
+
 
 def check_token_validity(token_timestamp: float) -> bool:
     current_timestamp = datetime.datetime.now().timestamp()

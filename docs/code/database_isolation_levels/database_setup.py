@@ -64,7 +64,8 @@ def postgres_container() -> Iterator[str]:
             CREATE TABLE inventory (
                 id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
                 product text NOT NULL,
-                buyer text
+                buyer text,
+                delivery_address text
             )
             """
         )

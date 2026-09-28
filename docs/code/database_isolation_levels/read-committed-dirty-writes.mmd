@@ -1,0 +1,11 @@
+sequenceDiagram
+    User 1->>Database: ① INSERT INTO inventory (product) VALUES ('Laptop')
+    User 1->>Database: COMMIT
+    User 2->>Database: ② SELECT buyer FROM inventory WHERE product='Laptop'
+    Database->>User 2: buyer=NULL delivery_address=NULL
+    User 1->>Database: ③ UPDATE inventory SET buyer='Alice' WHERE product='Laptop'
+    User 2->>Database: ④ UPDATE inventory SET buyer='Robin' WHERE product='Laptop'
+    User 2->>Database: ⑤ UPDATE inventory SET delivery_address='New York' WHERE product='Laptop'
+    User 2->>Database: ⑥ COMMIT
+    User 1->>Database: ⑦ UPDATE inventory SET delivery_address='Los Angeles' WHERE product='Laptop'
+    User 1->>Database: ⑧ COMMIT
