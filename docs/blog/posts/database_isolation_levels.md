@@ -23,7 +23,7 @@ For easy setup, you can use the prepared script:
 ??? "Postgres Setup Script"
 
     ```python title="database_setup.py"
-    --8 < --"docs/code/database_isolation_levels/database_setup.py"
+    --8<-- "docs/code/database_isolation_levels/database_setup.py"
     ```
 
 This script starts a postgres Docker container, which is automatically stopped when the user aborts the process. It also creates a table `inventory` with the columns:
@@ -67,7 +67,7 @@ Consider an example where two users concurrently access the same item in the `in
 === "Code"
 
     ```python title="read-committed-dirty-reads.py"
-    --8 < --"docs/code/database_isolation_levels/read-committed-dirty-reads.py"
+    --8<-- "docs/code/database_isolation_levels/read-committed-dirty-reads.py"
     ```
 
 Here, we have the following interactions with the database:
@@ -108,7 +108,7 @@ uv run docs/code/database_isolation_levels/read-committed-dirty-reads.py
 === "Code"
 
     ```python title="read-committed-dirty-writes.py"
-    --8 < --"docs/code/database_isolation_levels/read-committed-dirty-writes.py"
+    --8<-- "docs/code/database_isolation_levels/read-committed-dirty-writes.py"
     ```
 
 Executing the provided Python script gives us:
@@ -166,7 +166,7 @@ business rule of our example).
 === "Code"
 
     ```python title="read-committed-dirty-writes.py"
-    --8 < --"docs/code/database_isolation_levels/read-committed-read-modify-write-cycle.py"
+    --8<-- "docs/code/database_isolation_levels/read-committed-read-modify-write-cycle.py"
     ```
 
 Executing the Code gives:
