@@ -13,4 +13,6 @@
 </style>
 
 <img id="hp" src="static/portrait.jpg">
-I am a **data engineer** living in *Karlsruhe, Germany*. My passions are history, politics, sports and software. On this site, I collect a variety of links and blogs and other stuff that I consider **interesting** for me and maybe a broader audience.
+I am a **Software Engineer/Data Architect** living in *Karlsruhe, Germany*. 
+
+My passions are history, politics, sports and software. In this Blog, I collect a variety of links and blogs and other stuff that I consider **interesting** for me and maybe a broader audience in the context of Software, Data and Technology.
