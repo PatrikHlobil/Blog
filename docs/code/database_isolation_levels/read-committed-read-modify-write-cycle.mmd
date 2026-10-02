@@ -1,0 +1,10 @@
+sequenceDiagram
+    User 1->>Database: ① SELECT * FROM inventory WHERE product='Laptop'
+    Database->>User 1: No product found
+    User 2->>Database: ② SELECT * FROM inventory WHERE product='Laptop'
+    Database->>User 2: No product found
+    User 1->>Database: ③ INSERT INTO inventory (product) VALUES ('Laptop')
+    User 1->>Database: COMMIT
+    User 2->>Database: ④ INSERT INTO inventory (product) VALUES ('Laptop')
+    User 2->>Database: COMMIT
+    Note over Database: 2 Laptops in table (invalid state)

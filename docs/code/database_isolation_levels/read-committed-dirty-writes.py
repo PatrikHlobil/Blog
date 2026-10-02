@@ -55,7 +55,7 @@ def update_from_user_1() -> None:
             "UPDATE inventory SET delivery_address='Los Angeles' WHERE product='Laptop'"
         )
         log(
-            "User 1: UPDATE inventory SET delivery_address='Los Angeles' WHERE product='Laptop'"
+            "User 1: UPDATE inventory SET delivery_address='Los Angeles' WHERE product='Laptop'"  # noqa: E501
         )
 
         # ⑧
@@ -76,7 +76,7 @@ def update_from_user_2() -> None:
             "UPDATE inventory SET delivery_address='New York' WHERE product='Laptop'"
         )
         log(
-            "User 2: UPDATE inventory SET delivery_address='New York' WHERE product='Laptop'"
+            "User 2: UPDATE inventory SET delivery_address='New York' WHERE product='Laptop'"  # noqa: E501
         )
 
         # ⑥

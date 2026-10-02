@@ -11,7 +11,6 @@
 import psycopg
 from rich import print
 
-POSTGRES_IMAGE = "postgres:18.6-alpine3.24"
 POSTGRES_USER = "demo"
 POSTGRES_PASSWORD = "demo"
 POSTGRES_DB = "demo"

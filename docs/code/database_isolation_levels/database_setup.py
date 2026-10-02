@@ -59,16 +59,14 @@ def postgres_container() -> Iterator[str]:
                     )
                 time.sleep(0.25)
 
-        connection.execute(
-            """
+        connection.execute("""
             CREATE TABLE inventory (
                 id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
                 product text NOT NULL,
                 buyer text,
                 delivery_address text
             )
-            """
-        )
+            """)
         connection.commit()
         connection.close()
         yield connection_string
